@@ -32,12 +32,9 @@ def chamarReagentes():
     listValoresReagentes = []
 
     for reagentes in listaReagentes:
-        elemento = ""
-        for let in reagentes:
-            if isinstance(let, str):
-                elemento += let
-            valor = float(input(f"Digite o valor do reagente {elemento}"))
-            listValoresReagentes.append(valor)
+        
+        valor = float(input(f"Digite o valor do reagente {reagentes}: "))
+        listValoresReagentes.append(valor)
 
     return [listValoresReagentes, listaReagentes]
 
@@ -58,30 +55,27 @@ def chamarProdutos():
     print("Digite o primeiro Produto. Considere digitar como já equilibrado - Exemplo: 2H2")
     print("Aviso - Para casos de multiplicação, digitar o valor já multiplicado. Exemplo: 2(H2 + O2) -> 2H2 e 2O2")
 
-    reagente = input("Digite o produto: ")
-    listProdutos.append(reagente)
+    produto = input("Digite o Produto: ")
+    listProdutos.append(produto)
 
     resposta = input("Existe mais algum produto? (S / N)").lower()
 
     while resposta == "s":
-        reagente = input("Digite o produto: ")
-        listProdutos.append(reagente)
+        produto = input("Digite o Produto: ")
+        listProdutos.append(produto)
 
-        resposta = input("Existe mais algum reagente? (S / N)").lower()
+        resposta = input("Existe mais algum produto? (S / N)").lower()
 
     print("Reagentes Finalizados")
 
-    listValoresReagentes = []
+    listValoresProdutos = []
 
     for reagentes in listProdutos:
-        elemento = ""
-        for let in reagentes:
-            if isinstance(let, str):
-                elemento += let
-            valor = float(input(f"Digite o valor do reagente {elemento}"))
-            listValoresReagentes.append(valor)
+        
+        valor = float(input(f"Digite o valor do produto {reagentes}: "))
+        listValoresProdutos.append(valor)
 
-    return [listValoresReagentes, listProdutos]
+    return [listValoresProdutos, listProdutos]
 
 
 def main():
@@ -90,9 +84,19 @@ def main():
     umidadeAr = 0.6
     pEntradaAr = 1
     tEntradaAr = 298.15 #KELVIN
+    tSaida = 800
     tCombustivel = 870.0
     taxaCalorPerdido = 512.56
     vazaoAr = 67.5
+    vExcessoAr = 1.8
+
+    PRESSAO_AMBIENTE = 101.325
+    TEMPERATURA_ENTRADA = 298.15
+    DPE = 0.9810 #PERDA DE PRESSÃO NO DUTO DE ENTRADA
+    VAZAO_MASSA = 67.5
+    NGG = 100.0
+    RAZAO_PRESSAO = 17.9
+    
 
     #Declarar Variável
     vazaoCombusivel = float(input("Digite a vazão do combustível: "))
